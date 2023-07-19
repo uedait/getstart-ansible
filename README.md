@@ -15,19 +15,20 @@
 
 ## 使い方
 > $ ansible-playbook create_azure_vm.yml
+
 Azure リソース作成用のプレイブックを実行し、仮想マシンを作成します。
 プレイブックを実行すると、仮想マシンのローカル管理者のパスワードを設定するよう求められます。
 プレイブックの実行中、パブリックIPアドレスのリソースが作成され、パブリックIPアドレスが表示されますので、これを控えます。
 
-PLAY [provision new azure host]
-.... 略 ....
-TASK [Output public IP] 
-ok: [localhost] => {
-    "msg": "The public IP is 20.89.105.16"
-}
-.... 略 ....
-
+> PLAY [provision new azure host]
+> .... 略 ....
+> TASK [Output public IP]
+> ok: [localhost] => {
+>   "msg": "The public IP is 20.89.105.16"
+> }
+> .... 略 ....
 
 > $ ansible-playbook -i 20.89.105.16, domain.yml
+
 仮想マシンが作成され、WinRM の構成が終了したら、控えたパブリックIPアドレスを指定して、ドメインコントローラ構成用のプレイブックを実行します。
 
