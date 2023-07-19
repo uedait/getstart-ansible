@@ -1,0 +1,37 @@
+---
+- hosts: all
+  vars_prompt:
+    - name: ansible_password
+      prompt: "Enter local administrator password"
+  vars:
+    ansible_user: azureuser
+    ansible_connection: winrm
+    ansible_winrm_transport: ntlm
+    ansible_winrm_server_cert_validation: ignore
+  tasks:
+  - name: Install AD Services feature ## AD DS のインストール
+    win_feature:
+      name: AD-Domain-Services
+      state: present
+      include_sub_features: yes
+      include_management_tools: yes
+
+  - name: Install DNS Server feature ## DNS サーバーのインストール
+    win_feature:
+      name: DNS
+      state: present
+      include_sub_features: yes
+      include_management_tools: yes
+
+  - name: Create new forest ## 新規フォレストの作成
+    win_domain:
+      dns_domain_name: hogehoge.local
+      safe_mode_password: RememberTheCant!
+      domain_admin_user: ansible
+      domain_admin_password: password
+      state: domain
+      
+  - name: Reboot after creation
+    win_reboot:
+      reboot_timeout: 600
+      msg: "Reboot initiated by Ansible for AD DS installation"
