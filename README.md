@@ -16,6 +16,12 @@
 
 
 ## 使い方
+Azure CLI を起動します。
+
+> git clone https://github.com/uedait/getstart-ansible.git
+
+このリポジトリをクローンします。
+
 > $ ansible-playbook create_azure_vm.yml
 
 Azure リソース作成用のプレイブックを実行し、仮想マシンを作成します。
