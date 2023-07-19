@@ -1,6 +1,7 @@
 # getstart-ansible
 - この サンプル Ansible プレイブック は、以下のドキュメントを参考に作成したものです。
   - https://learn.microsoft.com/ja-jp/azure/developer/ansible/vm-configure-windows?tabs=ansible#complete-sample-ansible-playbook
+- これはデモ用のコードであり、実環境での利用を想定していません。
 
 
 ## 説明
@@ -12,6 +13,7 @@
 
 - domain.yml
 ドメインコントローラー の役割をインストールし、新規フォレストを作成します。
+
 
 ## 使い方
 > $ ansible-playbook create_azure_vm.yml
